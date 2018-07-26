@@ -1,3 +1,8 @@
 <resources>
+    <!--&#160;-->
     <string name="app_name">common</string>
+    <string name="cancel">取消</string>
+    <string name="ok">确定</string>
+    <string name="permission_tip">权限提示</string>
+    <string name="permission_tip_message">当前功能缺少必要权限无法使用! \n请重新赋予权限</string>
 </resources>
