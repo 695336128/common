@@ -9,7 +9,7 @@ import android.content.Context
  */
 abstract class BasePresenter<T, E> {
 
-    var context: Context? = null
+    var mContext: Context? = null
     var mModel: E? = null
     var mView: T? = null
 
