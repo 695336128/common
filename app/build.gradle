@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 26
@@ -28,6 +29,8 @@ dependencies {
 
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version" //分包
     api 'com.android.support:multidex:1.0.0'//分包
+    implementation 'com.jakewharton:butterknife:8.8.1' // butterknife
+    kapt "com.jakewharton:butterknife-compiler:8.8.1"// butterknife
 
 }
 repositories {
