@@ -1,6 +1,7 @@
 package com.zhang.common.base
 
 import android.content.Context
+import com.zhang.common.baserx.RxManager
 
 /**
  * Created by zhang .
@@ -12,6 +13,7 @@ abstract class BasePresenter<T, E> {
     var mContext: Context? = null
     var mModel: E? = null
     var mView: T? = null
+    var mRxManage = RxManager()
 
     fun setVM(v: T, m: E) {
         this.mModel = m
@@ -20,5 +22,5 @@ abstract class BasePresenter<T, E> {
     }
 
     fun onStart() {}
-    fun onDestroy(){}
+    fun onDestroy(){mRxManage.clear()}
 }

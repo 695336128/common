@@ -14,7 +14,9 @@ class BaseApplication : Application(){
 
     val TAG = "FATE"
 
-    val context by lazy { this } //这里使用了委托，表示只有使用到instance才会执行该段代码
+    companion object {
+        val context by lazy { this } //这里使用了委托，表示只有使用到instance才会执行该段代码
+    }
 
     override fun onCreate() {
         super.onCreate()
