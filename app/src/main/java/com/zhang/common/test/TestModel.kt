@@ -2,6 +2,8 @@ package com.zhang.common.test
 
 import com.zhang.common.baserx.RxSchedulers
 import io.reactivex.Observable
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 /**
  * Created by zhang .
@@ -12,10 +14,16 @@ class TestModel: TestContract.Model{
     override fun loadData(): Observable<TestBean> {
         // 使用RxJava+Retrofit进行网络请求
         return Observable.create<TestBean>{
-            subscriber ->
+            emmitter ->
             var testBean: TestBean? = null
-            testBean?.let { subscriber.onNext(it) }
-            subscriber.onComplete()
+            val retrofit:Retrofit = Retrofit.Builder()
+                    .baseUrl("http://www.wanandroid.com/")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+            val ipService = retrofit.create(Api::class.java)
+            testBean = ipService.getTest().execute().body()
+            testBean?.let { emmitter.onNext(it) }
+//            emmitter.onComplete()
         }.compose(RxSchedulers.io_main<TestBean>())
     }
 

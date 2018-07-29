@@ -18,11 +18,11 @@ class TestPresenter : TestContract.Presenter() {
             }
 
             override fun doOnNext(t: TestBean) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                mView?.doWithData(t)
             }
 
             override fun doOnError(message: String) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                println(message)
             }
         })
 

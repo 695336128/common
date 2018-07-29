@@ -16,7 +16,7 @@ object TUtil {
         try {
             return ((o.javaClass
                     .genericSuperclass as ParameterizedType).actualTypeArguments[i] as Class<T>)
-                    .newInstance();
+                    .newInstance()
         } catch (e: InstantiationException) {
         } catch (e: IllegalAccessException) {
         } catch (e: ClassCastException) {

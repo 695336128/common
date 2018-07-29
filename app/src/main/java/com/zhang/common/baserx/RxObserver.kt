@@ -1,9 +1,7 @@
 package com.zhang.common.baserx
 
-import android.app.Application
 import android.content.Context
 import com.zhang.common.R
-import com.zhang.common.baseapp.BaseApplication
 import io.reactivex.Observer
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -19,12 +17,12 @@ abstract class RxObserver<T>(context: Context, msg: String, showDialog: Boolean)
     var msg: String? = null
     var showDialog = true
 
-    constructor(context: Context) : this(context, (BaseApplication.context as Application).getString(R.string.loading), true)
+    constructor(context: Context) : this(context, context.applicationContext.getString(R.string.loading), true)
 
-    constructor(context: Context, showDialog: Boolean) : this(context, (BaseApplication.context as Application).getString(R.string.loading), showDialog)
+    constructor(context: Context, showDialog: Boolean) : this(context, context.applicationContext.getString(R.string.loading), showDialog)
 
     override fun onComplete() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun onSubscribe(d: Disposable) {
