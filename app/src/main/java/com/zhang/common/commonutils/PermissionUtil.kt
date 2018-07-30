@@ -83,7 +83,7 @@ object PermissionUtil {
         alertDialog = AlertDialog.Builder(context)
                 .setTitle(context.getString(R.string.permission_tip))
                 .setMessage(context.getString(R.string.permission_tip_message))
-                .setNegativeButton(context.getString(R.string.cancel)) { dialogInterface, i -> AppManager.instance?.finishActivity() }
+                .setNegativeButton(context.getString(R.string.cancel)) { dialogInterface, i -> AppManager.instance.finishActivity() }
                 .setPositiveButton(context.getString(R.string.ok), null)
                 .setCancelable(false)
                 .create()

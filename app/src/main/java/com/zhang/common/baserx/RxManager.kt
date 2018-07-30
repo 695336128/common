@@ -3,6 +3,7 @@ package com.zhang.common.baserx
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
+import io.reactivex.functions.Consumer
 
 
 /**
@@ -14,6 +15,8 @@ class RxManager {
     val mObservables: Map<String, Observable<*>> = HashMap()
     // 管理Observables 和 Subscribers订阅
     val mCompositeDisposable = CompositeDisposable()
+
+    val rxBus: RxBus = RxBus.instance
 
     /**
      * 订阅者管理
@@ -27,5 +30,14 @@ class RxManager {
      */
     fun clear() {
         mCompositeDisposable.clear()
+    }
+
+    fun <T> onEvent(cls: Class<T>, mConsumer: Consumer<T>) {
+        rxBus.toObservable(cls).map { o -> { o as T } }
+                .subscribe { mConsumer }
+    }
+
+    fun post(content: Any) {
+        rxBus.post(content)
     }
 }
