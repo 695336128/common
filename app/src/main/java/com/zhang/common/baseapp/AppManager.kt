@@ -11,7 +11,7 @@ import java.util.*
  * DATA: 2018/7/21 .
  * Description : activity管理
  */
-class AppManager {
+class AppManager private constructor(){
 
     var activityStack: Stack<Activity>? = null
 
