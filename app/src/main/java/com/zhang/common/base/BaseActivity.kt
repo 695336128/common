@@ -46,7 +46,7 @@ abstract class BaseActivity<T : BasePresenter<*, *>, E : BaseModel> : AppCompatA
     fun doBeforeSetcontentView() {
         // TODO: 设置昼夜主题
         // 把Activity放到application栈中管理
-        AppManager.instance?.addActivity(this)
+        AppManager.instance.addActivity(this)
         // 无标题设置
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         // 设置横屏(or 竖屏)
@@ -122,7 +122,7 @@ abstract class BaseActivity<T : BasePresenter<*, *>, E : BaseModel> : AppCompatA
             mPresenter?.onDestroy()
         }
         if (!isConfigChange) {
-            AppManager.instance?.finishActivity(this)
+            AppManager.instance.finishActivity(this)
         }
         unbinder?.unbind()
     }

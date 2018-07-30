@@ -16,22 +16,10 @@ class AppManager {
     var activityStack: Stack<Activity>? = null
 
     companion object {
-        @Volatile
-        var instance: AppManager? = null
-
-        /**
-         * 获取单例
-         */
-        fun getAppManager(): AppManager? {
-            if (instance == null) {
-                synchronized(AppManager.javaClass) {
-                    instance = AppManager()
-                    instance!!.activityStack = Stack()
-                }
-            }
-
-            return instance
+        val instance by lazy(LazyThreadSafetyMode.SYNCHRONIZED){
+            AppManager()
         }
+
     }
 
     /**
@@ -89,7 +77,7 @@ class AppManager {
     fun finishActivity(cls: Class<*>) {
         try {
             for (activity in activityStack!!) {
-                if (activity.javaClass.equals(cls)) {
+                if (cls == activity.javaClass) {
                     activity.finish()
                 }
             }
@@ -113,7 +101,7 @@ class AppManager {
      */
     fun returnToActivity(cls: Class<*>){
         while (activityStack?.size != 0){
-            if (activityStack?.peek()?.javaClass?.equals(cls)!!){
+            if (cls == activityStack?.peek()?.javaClass){
                 break
             } else {
                 finishActivity(activityStack?.peek())
@@ -127,7 +115,7 @@ class AppManager {
     fun isOpenActivity(cls: Class<*>):Boolean{
         if (activityStack != null){
             for (activity in activityStack!!){
-                if (activity.javaClass.equals(cls)){
+                if (cls == activity.javaClass){
                     return true
                 }
             }
