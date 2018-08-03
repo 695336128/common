@@ -21,6 +21,6 @@ abstract class BasePresenter<T, E> {
         this.onStart()
     }
 
-    fun onStart() {}
-    fun onDestroy(){mRxManage.clear()}
+    open fun onStart() {}
+    open fun onDestroy(){mRxManage.clear()}
 }

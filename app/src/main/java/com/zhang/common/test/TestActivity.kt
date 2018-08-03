@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import butterknife.BindView
 import butterknife.OnClick
 import com.zhang.common.R
@@ -46,6 +47,10 @@ class TestActivity: BaseActivity<TestPresenter, TestModel>(),TestContract.View{
         resultTv.text = "name: ${data.name} \n url: ${data.url}"
     }
 
+    override fun doWithEvent(data: TestBean) {
+        Toast.makeText(mContext,"GetEvevt",Toast.LENGTH_SHORT).show()
+    }
+
     @OnClick(R.id.request_button)
     fun onClick(view: View){
         when(view.id){
@@ -53,7 +58,6 @@ class TestActivity: BaseActivity<TestPresenter, TestModel>(),TestContract.View{
             else -> {}
         }
     }
-
 
 
     override fun showLoading(title: String) {

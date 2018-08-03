@@ -8,7 +8,7 @@ import java.io.Serializable
  * DATA: 2018/7/27 .
  * Description :
  */
-class TestBean : Serializable{
+open class TestBean : Serializable{
 
     @Expose
     var name: String? = null

@@ -2,6 +2,7 @@ package com.zhang.common.test
 
 import com.zhang.common.baserx.RxObserver
 import io.reactivex.disposables.Disposable
+import io.reactivex.functions.Consumer
 
 /**
  * Created by zhang .
@@ -9,6 +10,14 @@ import io.reactivex.disposables.Disposable
  * Description :
  */
 class TestPresenter : TestContract.Presenter() {
+
+    override fun onStart(){
+        mRxManage.onEvent(TestBean::class.java, object : Consumer<TestBean>{
+            override fun accept(t: TestBean?) {
+                println(t.toString())
+            }
+        })
+    }
 
     override fun loadDataRequest() {
         // 处理在Model中的请求返回值
@@ -19,6 +28,7 @@ class TestPresenter : TestContract.Presenter() {
 
             override fun doOnNext(t: TestBean) {
                 mView?.doWithData(t)
+                mRxManage.post(t)
             }
 
             override fun doOnError(message: String) {

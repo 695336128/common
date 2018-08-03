@@ -19,14 +19,13 @@ import io.reactivex.Observable
  */
 class RxBus private constructor() {
 
-    private var mBus: Relay<Any>
+    var mBus: Relay<Any>
 
     init {
         mBus = PublishRelay.create()
         mBus = mBus.toSerialized()
     }
 
-    //    val subjectMapper: ConcurrentHashMap<in Any,MutableList<Relay<Any>>> = ConcurrentHashMap()
     companion object {
         val instance by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
             RxBus()
@@ -47,60 +46,5 @@ class RxBus private constructor() {
     fun hasObservers(): Boolean {
         return mBus.hasObservers()
     }
-
-
-//    /**
-//     * 注册事件源
-//     */
-//    fun register(tag: Any): Observable<Any> {
-//        var subjectList: MutableList<Relay<Any>>? = subjectMapper[tag]
-//        if (null == subjectList) {
-//            subjectList = ArrayList()
-//            subjectMapper[tag] = subjectList
-//        }
-//        val subject: Relay<Any> = PublishRelay.create()
-//        subject.toSerialized()
-//        subjectList.add(subject)
-//        return subject
-//    }
-//
-//    /**
-//     * 取消注册
-//     */
-//    fun unregister(tag: Any, observable: Observable<*>): RxBus {
-//        val subjectList:MutableList<Relay<Any>>? = subjectMapper[tag]
-//        if (null != subjectList){
-//            subjectList.remove(observable)
-//            if (isEmpty(subjectList)){
-//                subjectMapper.remove(tag)
-//            }
-//        }
-//        return instance
-//    }
-//
-//    /**
-//     * 触发事件
-//     */
-//    fun post(content: Any) {
-//        post(content.javaClass.name, content)
-//    }
-//
-//    /**
-//     * 触发事件
-//     */
-//    fun post(tag: Any,content: Any){
-//        val subjectList:MutableList<Relay<Any>>? = subjectMapper[tag]
-//        if(!isEmpty(subjectList) && subjectList != null){
-//            for (subject in subjectList){
-//                subject.accept(content)
-//            }
-//        }
-//
-//    }
-//
-//    fun isEmpty(collection: Collection<Relay<*>>?): Boolean {
-//        return null == collection || collection.isEmpty()
-//    }
-
 
 }

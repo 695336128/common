@@ -17,6 +17,7 @@ interface TestContract {
 
     interface View : BaseView {
         fun doWithData(data: TestBean)
+        fun doWithEvent(data: TestBean)
     }
 
     abstract class Presenter : BasePresenter<View, Model>() {
