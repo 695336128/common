@@ -37,4 +37,7 @@ object AppConfig {
     var PERMISSIONS = arrayOf(
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE)
+
+    /** 请求成功标识码*/
+    val REQUEST_SUCCESS_CODE = "1000"
 }

@@ -34,7 +34,7 @@ abstract class RxObserver<T>(context: Context, msg: String, showDialog: Boolean)
     }
 
     override fun onError(e: Throwable) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        doOnError(e.message!!)
     }
 
     fun addDisposable(mCompositeDisposable: CompositeDisposable) {

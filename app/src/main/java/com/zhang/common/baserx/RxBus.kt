@@ -10,19 +10,16 @@ import io.reactivex.Observable
  * DATA: 2018/7/30 .
  * Description : 用RxJava 实现 EventBus
  * 引入J神的rxrelay2,即使出现异常也不会终止订阅关系的 RxRelay
- */
-
-/**
+ *
  * EventMsg eventMsg = new EventMsg();
  * eventMsg.setMsg("发送数据");
  * RxBus.getInstance().post(eventMsg);
  */
 class RxBus private constructor() {
 
-    var mBus: Relay<Any>
+    private var mBus: Relay<Any> = PublishRelay.create()
 
     init {
-        mBus = PublishRelay.create()
         mBus = mBus.toSerialized()
     }
 
@@ -41,10 +38,6 @@ class RxBus private constructor() {
 
     fun <T> toObservable(tClass: Class<T>): Observable<T> {
         return mBus.ofType(tClass)
-    }
-
-    fun hasObservers(): Boolean {
-        return mBus.hasObservers()
     }
 
 }

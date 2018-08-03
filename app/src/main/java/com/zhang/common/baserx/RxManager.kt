@@ -9,6 +9,14 @@ import io.reactivex.functions.Consumer
  * Created by zhang .
  * DATA: 2018/7/27 .
  * Description : 用于管理单个presenter的RxBus的事件和Rxjava相关代码的生命周期处理
+ *
+ * RxManager.post()
+ * mRxManage.onEvent(TestBean::class.java, object : Consumer<TestBean>{
+ *   override fun accept(t: TestBean?) {
+ *       println(t.toString())
+ *      }
+ *  })
+ *
  */
 class RxManager {
     // 管理Observables 和 Subscribers订阅

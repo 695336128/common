@@ -1,5 +1,6 @@
 package com.zhang.common.test
 
+import com.zhang.common.baserx.RxHelper
 import com.zhang.common.baserx.RxSchedulers
 import io.reactivex.Observable
 import retrofit2.Retrofit
@@ -25,6 +26,8 @@ class TestModel: TestContract.Model{
             testBean?.let { emmitter.onNext(it) }
 //            emmitter.onComplete()
         }.compose(RxSchedulers.io_main<TestBean>())
+                .compose(RxHelper.handleResult<TestBean>())
     }
 
 }
+

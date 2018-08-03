@@ -9,14 +9,12 @@ import io.reactivex.schedulers.Schedulers
  * DATA: 2018/7/27 .
  * Description : RxJava调度管理
  */
-class RxSchedulers {
-    companion object {
-        fun <T> io_main(): ObservableTransformer<T, T> {
-            return ObservableTransformer { observable ->
-                observable.subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-            }
+object RxSchedulers {
+    fun <T> io_main(): ObservableTransformer<T, T> {
+        return ObservableTransformer { observable ->
+            observable.subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
         }
-
     }
+
 }

@@ -5,5 +5,4 @@ package com.zhang.common.base
  * DATA: 2018/7/22 .
  * Description : BaseModel
  */
-interface BaseModel {
-}
+interface BaseModel

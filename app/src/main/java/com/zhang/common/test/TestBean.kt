@@ -1,6 +1,7 @@
 package com.zhang.common.test
 
 import com.google.gson.annotations.Expose
+import com.zhang.common.baserx.BaseRespose
 import java.io.Serializable
 
 /**
@@ -8,7 +9,7 @@ import java.io.Serializable
  * DATA: 2018/7/27 .
  * Description :
  */
-open class TestBean : Serializable{
+open class TestBean : Serializable,BaseRespose<TestBean>(){
 
     @Expose
     var name: String? = null
