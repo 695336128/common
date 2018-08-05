@@ -33,6 +33,7 @@ import android.Manifest
  * Description : APP 相关参数配置
  */
 object AppConfig {
+
     //需要申请的权限列表
     var PERMISSIONS = arrayOf(
             Manifest.permission.WRITE_EXTERNAL_STORAGE,

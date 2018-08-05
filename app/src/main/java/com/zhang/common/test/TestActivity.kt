@@ -10,6 +10,7 @@ import butterknife.BindView
 import butterknife.OnClick
 import com.zhang.common.R
 import com.zhang.common.base.BaseActivity
+import com.zhang.common.retrofit.RetrofitUtils
 
 /**
  * Created by zhang .
@@ -20,6 +21,7 @@ class TestActivity: BaseActivity<TestPresenter, TestModel>(),TestContract.View{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        RetrofitUtils.BASE_URL = "http://www.wanandroid.com/"
     }
 
     @BindView(R.id.result_tv)

@@ -1,6 +1,7 @@
 package com.zhang.common.test
 
-import retrofit2.Call
+import com.zhang.common.baserx.BaseRespose
+import io.reactivex.Observable
 import retrofit2.http.GET
 
 /**
@@ -10,6 +11,6 @@ import retrofit2.http.GET
  */
 interface Api{
     @GET("tools/mockapi/7249/getTest")
-    fun getTest(): Call<TestBean>
+    fun getTest(): Observable<BaseRespose<TestBean>>
 
 }

@@ -8,9 +8,6 @@ import io.reactivex.ObservableTransformer
  * Created by zhang .
  * DATA: 2018/8/3 .
  * Description : 对服务器返回数据成功和失败处理
- *
- *
- *
  */
 object RxHelper {
     fun <T> handleResult(): ObservableTransformer<BaseRespose<T>, T> {
@@ -19,7 +16,7 @@ object RxHelper {
                 if (result.success()) {
                     return@flatMap createData(result.data)
                 } else {
-                    return@flatMap Observable.error<T>(ServerException(result.msg ?: "ERROR"))
+                    return@flatMap Observable.error<T>(ServerException(result.msg ?: "UNKNOWN SERVER ERROR"))
                 }
             }
         }
