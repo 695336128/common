@@ -1,7 +1,7 @@
 package com.zhang.common.baserx
 
 import android.content.Context
-import com.zhang.common.R
+import com.zhang.common.commonutils.LoadingUtil
 import io.reactivex.Observer
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -11,21 +11,32 @@ import io.reactivex.disposables.Disposable
  * DATA: 2018/7/27 .
  * Description : 对Subscriber进行封装
  */
-abstract class RxObserver<T>(context: Context, msg: String, showDialog: Boolean) : Observer<T> {
+abstract class RxObserver<T>(context: Context, showDialog: Boolean) : Observer<T> {
 
     var mContext: Context? = null
-    var msg: String? = null
     var showDialog = true
 
-    constructor(context: Context) : this(context, context.applicationContext.getString(R.string.loading), true)
+    init {
+        this.mContext = context
+        this.showDialog = showDialog
+    }
 
-    constructor(context: Context, showDialog: Boolean) : this(context, context.applicationContext.getString(R.string.loading), showDialog)
+    constructor(context: Context) : this(context, true)
+
 
     override fun onComplete() {
+        LoadingUtil.hideLoading()
 
     }
 
     override fun onSubscribe(d: Disposable) {
+        if (showDialog){
+            try {
+                LoadingUtil.showLoading(mContext!!)
+            }catch (e: Exception){
+                e.printStackTrace()
+            }
+        }
         doOnSubscribe(d)
     }
 
@@ -47,18 +58,5 @@ abstract class RxObserver<T>(context: Context, msg: String, showDialog: Boolean)
 
     protected abstract fun doOnError(message: String)
 
-    /**
-     * 显示浮动dialog
-     */
-    fun showDialog() {
-        this.showDialog = true
-    }
-
-    /**
-     * 隐藏浮动dialog
-     */
-    fun hideDialog() {
-        this.showDialog = true
-    }
 
 }

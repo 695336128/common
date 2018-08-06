@@ -11,6 +11,7 @@ import butterknife.ButterKnife
 import butterknife.Unbinder
 import com.zhang.common.baseapp.AppManager
 import com.zhang.common.commonutils.DeviceUtil
+import com.zhang.common.commonutils.LoadingUtil
 import com.zhang.common.commonutils.TUtil
 
 /**
@@ -98,7 +99,20 @@ abstract class BaseActivity<T : BasePresenter<*, *>, E : BaseModel> : AppCompatA
         startActivity(intent)
     }
 
-    // TODO: 显示or隐藏加载进度条
+    /**
+     * 显示加载框
+     */
+    fun showProgressDialog(){
+        LoadingUtil.showLoading(mContext!!)
+    }
+
+    /**
+     * 隐藏加载框
+     */
+    fun hideProgressDialog(){
+        LoadingUtil.hideLoading()
+    }
+
     // TODO: 显示or隐藏Toast
     // TODO: 显示or隐藏网络信息
 

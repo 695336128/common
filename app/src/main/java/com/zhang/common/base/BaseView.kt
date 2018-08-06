@@ -6,7 +6,7 @@ package com.zhang.common.base
  * Description : BaseView
  */
 interface BaseView {
-    fun showLoading(title: String)
+    fun showLoading()
     fun stopLoading()
     fun showErrorTip(msg: String)
 }

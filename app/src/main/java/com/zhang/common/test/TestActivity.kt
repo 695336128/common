@@ -61,13 +61,12 @@ class TestActivity: BaseActivity<TestPresenter, TestModel>(),TestContract.View{
         }
     }
 
-
-    override fun showLoading(title: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun showLoading() {
+        showProgressDialog()
     }
 
     override fun stopLoading() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        hideProgressDialog()
     }
 
     override fun showErrorTip(msg: String) {
