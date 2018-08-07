@@ -10,6 +10,7 @@ import butterknife.BindView
 import butterknife.OnClick
 import com.zhang.common.R
 import com.zhang.common.base.BaseActivity
+import com.zhang.common.commonutils.LoadingUtil
 import com.zhang.common.retrofit.RetrofitUtils
 
 /**
@@ -62,11 +63,11 @@ class TestActivity: BaseActivity<TestPresenter, TestModel>(),TestContract.View{
     }
 
     override fun showLoading() {
-        showProgressDialog()
+        LoadingUtil.showLoading(mContext!!)
     }
 
     override fun stopLoading() {
-        hideProgressDialog()
+        LoadingUtil.hideLoading()
     }
 
     override fun showErrorTip(msg: String) {

@@ -1,6 +1,6 @@
 package com.zhang.common.test
 
-import com.zhang.common.baserx.BaseRespose
+import com.zhang.common.basebean.BaseRespose
 import io.reactivex.Observable
 import retrofit2.http.GET
 

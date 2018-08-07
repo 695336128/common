@@ -13,7 +13,7 @@ import com.zhang.common.commonutils.TUtil
 /**
  * Created by zhang .
  * DATA: 2018/7/26 .
- * Description :
+ * Description : BaseFragment
  */
 abstract class BaseFragment<T: BasePresenter<*,*>,E: BaseModel> : Fragment() {
     var rootView: View? = null
@@ -81,10 +81,6 @@ abstract class BaseFragment<T: BasePresenter<*,*>,E: BaseModel> : Fragment() {
         }
         startActivity(intent)
     }
-
-    // TODO: 显示or隐藏加载进度条
-    // TODO: 显示or隐藏Toast
-    // TODO: 显示or隐藏网络信息
 
     override fun onDestroyView() {
         super.onDestroyView()

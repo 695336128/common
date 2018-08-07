@@ -1,5 +1,6 @@
 package com.zhang.common.baserx
 
+import com.zhang.common.basebean.BaseRespose
 import io.reactivex.Observable
 import io.reactivex.ObservableTransformer
 

@@ -1,4 +1,4 @@
-package com.zhang.common.baserx
+package com.zhang.common.basebean
 
 import com.zhang.common.baseapp.AppConfig.REQUEST_SUCCESS_CODE
 import java.io.Serializable
