@@ -12,6 +12,7 @@ import butterknife.Unbinder
 import com.zhang.common.baseapp.AppManager
 import com.zhang.common.commonutils.LoadingUtil
 import com.zhang.common.commonutils.TUtil
+import com.zhang.common.commonutils.ToastUtil
 
 /**
  * Created by zhang .
@@ -110,6 +111,13 @@ abstract class BaseActivity<T : BasePresenter<*, *>, E : BaseModel> : AppCompatA
      */
     fun stopProgressDialog() {
         LoadingUtil.hideLoading()
+    }
+
+    /**
+     * 显示Toast提示(来自String)
+     */
+    fun showToast(text: String) {
+        ToastUtil.showToast(this,text)
     }
 
     override fun onResume() {

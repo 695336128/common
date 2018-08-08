@@ -31,7 +31,7 @@ class TestPresenter : TestContract.Presenter() {
             }
 
             override fun doOnError(message: String) {
-                println(message)
+                mView?.showErrorTip(message)
             }
         })
 

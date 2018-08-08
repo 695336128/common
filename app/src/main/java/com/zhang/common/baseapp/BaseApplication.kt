@@ -1,5 +1,6 @@
 package com.zhang.common.baseapp
 
+import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
 import android.content.res.Resources
@@ -15,19 +16,17 @@ open class BaseApplication : Application(){
     val TAG = "FATE"
 
     companion object {
-        val context by lazy { this } //这里使用了委托，表示只有使用到instance才会执行该段代码
+        @SuppressLint("StaticFieldLeak")
+        var context: Context? = null
+
+        fun getAppResources():Resources{
+            return context?.resources!!
+        }
     }
 
     override fun onCreate() {
         super.onCreate()
-    }
-
-    fun getAppResources():Resources{
-        return this.getAppResources()
-    }
-
-    override fun onTerminate() {
-        super.onTerminate()
+        context = this
     }
 
     /**

@@ -10,6 +10,7 @@ import butterknife.ButterKnife
 import butterknife.Unbinder
 import com.zhang.common.commonutils.LoadingUtil
 import com.zhang.common.commonutils.TUtil
+import com.zhang.common.commonutils.ToastUtil
 
 /**
  * Created by zhang .
@@ -97,7 +98,12 @@ abstract class BaseFragment<T: BasePresenter<*,*>,E: BaseModel> : Fragment() {
         LoadingUtil.hideLoading()
     }
 
-
+    /**
+     * 显示Toast提示(来自String)
+     */
+    fun showToast(text: String) {
+        ToastUtil.showToast(activity,text)
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

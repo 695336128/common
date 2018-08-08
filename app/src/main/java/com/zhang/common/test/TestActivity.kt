@@ -8,10 +8,9 @@ import android.widget.TextView
 import android.widget.Toast
 import butterknife.BindView
 import butterknife.OnClick
-import com.orhanobut.logger.Logger
 import com.zhang.common.R
 import com.zhang.common.base.BaseActivity
-import com.zhang.common.commonutils.LoadingUtil
+import com.zhang.common.commonutils.L
 import com.zhang.common.retrofit.RetrofitUtils
 
 /**
@@ -49,7 +48,7 @@ class TestActivity: BaseActivity<TestPresenter, TestModel>(),TestContract.View{
     @SuppressLint("SetTextI18n")
     override fun doWithData(data: TestBean) {
         resultTv.text = "name: ${data.name} \n url: ${data.url}"
-        Logger.d("name: ${data.name} \n url: ${data.url}")
+        L.d("name: ${data.name} \n url: ${data.url}")
     }
 
     override fun doWithEvent(data: TestBean) {
@@ -65,14 +64,14 @@ class TestActivity: BaseActivity<TestPresenter, TestModel>(),TestContract.View{
     }
 
     override fun showLoading() {
-        LoadingUtil.showLoading(mContext!!)
+        startProgressDialog()
     }
 
     override fun stopLoading() {
-        LoadingUtil.hideLoading()
+        stopProgressDialog()
     }
 
     override fun showErrorTip(msg: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        showToast(msg)
     }
 }
