@@ -8,6 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import butterknife.BindView
 import butterknife.OnClick
+import com.orhanobut.logger.Logger
 import com.zhang.common.R
 import com.zhang.common.base.BaseActivity
 import com.zhang.common.commonutils.LoadingUtil
@@ -48,6 +49,7 @@ class TestActivity: BaseActivity<TestPresenter, TestModel>(),TestContract.View{
     @SuppressLint("SetTextI18n")
     override fun doWithData(data: TestBean) {
         resultTv.text = "name: ${data.name} \n url: ${data.url}"
+        Logger.d("name: ${data.name} \n url: ${data.url}")
     }
 
     override fun doWithEvent(data: TestBean) {

@@ -10,7 +10,7 @@ import android.support.multidex.MultiDex
  * DATA: 2018/7/21 .
  * Description : APPLICATION
  */
-class BaseApplication : Application(){
+open class BaseApplication : Application(){
 
     val TAG = "FATE"
 

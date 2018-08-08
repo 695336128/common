@@ -14,7 +14,6 @@ class TestPresenter : TestContract.Presenter() {
     override fun onStart(){
         mRxManage.onEvent(TestBean::class.java, object : Consumer<TestBean>{
             override fun accept(t: TestBean?) {
-                println(t.toString())
             }
         })
     }
