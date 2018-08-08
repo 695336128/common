@@ -10,7 +10,7 @@ import android.view.Window
 import butterknife.ButterKnife
 import butterknife.Unbinder
 import com.zhang.common.baseapp.AppManager
-import com.zhang.common.commonutils.DeviceUtil
+import com.zhang.common.commonutils.LoadingUtil
 import com.zhang.common.commonutils.TUtil
 
 /**
@@ -27,7 +27,7 @@ abstract class BaseActivity<T : BasePresenter<*, *>, E : BaseModel> : AppCompatA
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        DeviceUtil.setFullScreen(this)
+//        DeviceUtil.setFullScreen(this)
         isConfigChange = false
         setContentView(getLayoutId())
         unbinder = ButterKnife.bind(this)
@@ -96,6 +96,20 @@ abstract class BaseActivity<T : BasePresenter<*, *>, E : BaseModel> : AppCompatA
             intent.putExtras(bundle)
         }
         startActivity(intent)
+    }
+
+    /**
+     * 开启浮动加载进度条
+     */
+    fun startProgressDialog() {
+        LoadingUtil.showLoading(this)
+    }
+
+    /**
+     * 停止浮动加载进度条
+     */
+    fun stopProgressDialog() {
+        LoadingUtil.hideLoading()
     }
 
     override fun onResume() {

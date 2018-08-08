@@ -2,14 +2,12 @@ package com.zhang.common.commonutils
 
 import com.orhanobut.logger.*
 
-
-
 /**
  * Created by zhang .
  * DATA: 2018/8/8 .
  * Description : 日志工具类
  */
-object LoggerUtil {
+object L {
 
     private val TAG = "FATE"
 
@@ -49,4 +47,29 @@ object LoggerUtil {
         })
 
     }
+
+    fun v(text: String) {
+        Logger.v(text)
+    }
+
+    fun d(text: String) {
+        Logger.d(text)
+    }
+
+    fun i(text: String) {
+        Logger.i(text)
+    }
+
+    fun w(text: String) {
+        Logger.w(text)
+    }
+
+    fun e(text: String) {
+        Logger.e(text)
+    }
+
+    fun wtf(text: String) {
+        Logger.wtf(text)
+    }
+
 }

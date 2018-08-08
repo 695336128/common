@@ -1,7 +1,7 @@
 package com.zhang.common.test
 
 import com.zhang.common.baseapp.BaseApplication
-import com.zhang.common.commonutils.LoggerUtil
+import com.zhang.common.commonutils.L
 
 /**
  * Created by zhang .
@@ -11,6 +11,6 @@ import com.zhang.common.commonutils.LoggerUtil
 class MyApplication: BaseApplication() {
     override fun onCreate() {
         super.onCreate()
-        LoggerUtil.init(true)
+        L.init(true)
     }
 }

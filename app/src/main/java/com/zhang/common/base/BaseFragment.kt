@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import butterknife.ButterKnife
 import butterknife.Unbinder
+import com.zhang.common.commonutils.LoadingUtil
 import com.zhang.common.commonutils.TUtil
 
 /**
@@ -81,6 +82,22 @@ abstract class BaseFragment<T: BasePresenter<*,*>,E: BaseModel> : Fragment() {
         }
         startActivity(intent)
     }
+
+    /**
+     * 开启浮动加载进度条
+     */
+    fun startProgressDialog() {
+        LoadingUtil.showLoading(activity)
+    }
+
+    /**
+     * 停止浮动加载进度条
+     */
+    fun stopProgressDialog() {
+        LoadingUtil.hideLoading()
+    }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()
