@@ -2,14 +2,15 @@ package com.zhang.common.base
 
 import android.content.Context
 import android.content.Intent
-import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.app.AppCompatDelegate
 import android.view.Window
 import butterknife.ButterKnife
 import butterknife.Unbinder
 import com.zhang.common.baseapp.AppManager
+import com.zhang.common.baserx.RxManager
 import com.zhang.common.commonutils.LoadingUtil
 import com.zhang.common.commonutils.TUtil
 import com.zhang.common.commonutils.ToastUtil
@@ -23,13 +24,13 @@ abstract class BaseActivity<T : BasePresenter<*, *>, E : BaseModel> : AppCompatA
     var mPresenter: T? = null
     var mModel: E? = null
     var mContext: Context? = null
-    var isConfigChange: Boolean = false
     var unbinder: Unbinder? = null
+    var mRxManager: RxManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        DeviceUtil.setFullScreen(this)
-        isConfigChange = false
+        mRxManager = RxManager()
+        doBeforeSetcontentView()
         setContentView(getLayoutId())
         unbinder = ButterKnife.bind(this)
         mContext = this
@@ -44,13 +45,12 @@ abstract class BaseActivity<T : BasePresenter<*, *>, E : BaseModel> : AppCompatA
      * 设置layout前配置
      */
     fun doBeforeSetcontentView() {
-        // TODO: 设置昼夜主题
         // 把Activity放到application栈中管理
         AppManager.instance.addActivity(this)
         // 无标题设置
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         // 设置横屏(or 竖屏)
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+//        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         // TODO: 默认着色状态栏
     }
 
@@ -100,6 +100,14 @@ abstract class BaseActivity<T : BasePresenter<*, *>, E : BaseModel> : AppCompatA
     }
 
     /**
+     * 设置昼夜主题
+     */
+    fun initTheme(@AppCompatDelegate.NightMode mode: Int){
+        delegate.setLocalNightMode(mode)
+        recreate()
+    }
+
+    /**
      * 开启浮动加载进度条
      */
     fun startProgressDialog() {
@@ -130,7 +138,6 @@ abstract class BaseActivity<T : BasePresenter<*, *>, E : BaseModel> : AppCompatA
 
     override fun onConfigurationChanged(newConfig: Configuration?) {
         super.onConfigurationChanged(newConfig)
-        isConfigChange = true
     }
 
     override fun onDestroy() {
@@ -138,9 +145,7 @@ abstract class BaseActivity<T : BasePresenter<*, *>, E : BaseModel> : AppCompatA
         if (mPresenter != null) {
             mPresenter?.onDestroy()
         }
-        if (!isConfigChange) {
-            AppManager.instance.finishActivity(this)
-        }
+        AppManager.instance.removeActivity(this)
         unbinder?.unbind()
     }
 

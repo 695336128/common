@@ -33,6 +33,16 @@ class AppManager private constructor(){
     }
 
     /**
+     * 移除Activity
+     */
+    fun removeActivity(activity: Activity) {
+        if (activityStack == null) {
+            activityStack = Stack()
+        }
+        activityStack?.remove(activity)
+    }
+
+    /**
      * 获取当前Activity(堆栈中最后一个压入栈的)
      */
     fun currentActivity(): Activity? {
@@ -61,8 +71,8 @@ class AppManager private constructor(){
     /**
      * 结束指定的Activity
      */
-    fun finishActivity(activity: Activity?) {
-        var activity = activity
+    fun finishActivity(targetActivity: Activity?) {
+        var activity = targetActivity
         if (activity != null) {
             activityStack!!.remove(activity)
             activity.finish()

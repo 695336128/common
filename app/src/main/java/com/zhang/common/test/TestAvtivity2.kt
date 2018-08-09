@@ -1,5 +1,6 @@
 package com.zhang.common.test
 
+import com.zhang.common.R
 import com.zhang.common.base.BaseActivity
 import com.zhang.common.base.BaseModel
 import com.zhang.common.base.BasePresenter
@@ -12,14 +13,12 @@ import com.zhang.common.base.BasePresenter
 class TestAvtivity2: BaseActivity<BasePresenter<*,*>, BaseModel>() {
 
     override fun getLayoutId(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return R.layout.activity_test
     }
 
     override fun initPresenter() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun initView() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
