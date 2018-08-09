@@ -11,9 +11,6 @@ object L {
 
     private val TAG = "FATE"
 
-    /**
-     * 初始化
-     */
     fun init(){
         this.init(false)
     }
