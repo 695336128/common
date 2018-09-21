@@ -23,9 +23,9 @@ abstract class BaseFragment<T: BasePresenter<*,*>,E: BaseModel> : Fragment() {
     var mModel: E? = null
     var unbinder: Unbinder? = null
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         if (rootView == null){
-            rootView = inflater?.inflate(getLayoutResource(),container,false)
+            rootView = inflater.inflate(getLayoutResource(),container,false)
         }
         unbinder = ButterKnife.bind(this, rootView!!)
         mPresenter = TUtil.getT(this,0)
@@ -88,7 +88,7 @@ abstract class BaseFragment<T: BasePresenter<*,*>,E: BaseModel> : Fragment() {
      * 开启浮动加载进度条
      */
     fun startProgressDialog() {
-        LoadingUtil.showLoading(activity)
+        LoadingUtil.showLoading(mPresenter?.mContext!!)
     }
 
     /**
@@ -102,7 +102,7 @@ abstract class BaseFragment<T: BasePresenter<*,*>,E: BaseModel> : Fragment() {
      * 显示Toast提示(来自String)
      */
     fun showToast(text: String) {
-        ToastUtil.showToast(activity,text)
+        ToastUtil.showToast(mPresenter?.mContext!!,text)
     }
 
     override fun onDestroyView() {
