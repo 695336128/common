@@ -6,8 +6,6 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import butterknife.ButterKnife
-import butterknife.Unbinder
 import com.zhang.common.commonutils.LoadingUtil
 import com.zhang.common.commonutils.TUtil
 import com.zhang.common.commonutils.ToastUtil
@@ -21,13 +19,11 @@ abstract class BaseFragment<T: BasePresenter<*,*>,E: BaseModel> : Fragment() {
     var rootView: View? = null
     var mPresenter: T? = null
     var mModel: E? = null
-    var unbinder: Unbinder? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         if (rootView == null){
             rootView = inflater.inflate(getLayoutResource(),container,false)
         }
-        unbinder = ButterKnife.bind(this, rootView!!)
         mPresenter = TUtil.getT(this,0)
         mModel = TUtil.getT(this,1)
         if (mPresenter != null){
@@ -107,7 +103,6 @@ abstract class BaseFragment<T: BasePresenter<*,*>,E: BaseModel> : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        unbinder?.unbind()
         if (mPresenter != null){
             mPresenter!!.onDestroy()
         }

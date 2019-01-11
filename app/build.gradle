@@ -1,7 +1,6 @@
-apply plugin: 'com.android.library'
+apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 26
@@ -33,9 +32,6 @@ dependencies {
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     //分包
     api 'com.android.support:multidex:1.0.0'
-    // butterknife
-    api 'com.jakewharton:butterknife:8.8.1'
-    kapt "com.jakewharton:butterknife-compiler:8.8.1"
     //retrofit和rxjava
     api 'com.squareup.retrofit2:retrofit:2.3.0'
     api 'com.squareup.retrofit2:converter-gson:2.3.0'

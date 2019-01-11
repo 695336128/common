@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit
  * DATA: 2018/8/5 .
  * Description : RETROFIT
  */
-class RetrofitUtils constructor(){
+class RetrofitUtils {
 
     private lateinit var mRetrofit: Retrofit
 

@@ -7,8 +7,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.app.AppCompatDelegate
 import android.view.Window
-import butterknife.ButterKnife
-import butterknife.Unbinder
 import com.zhang.common.baseapp.AppManager
 import com.zhang.common.baserx.RxManager
 import com.zhang.common.commonutils.LoadingUtil
@@ -24,7 +22,6 @@ abstract class BaseActivity<T : BasePresenter<*, *>, E : BaseModel> : AppCompatA
     var mPresenter: T? = null
     var mModel: E? = null
     var mContext: Context? = null
-    var unbinder: Unbinder? = null
     var mRxManager: RxManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +29,6 @@ abstract class BaseActivity<T : BasePresenter<*, *>, E : BaseModel> : AppCompatA
         mRxManager = RxManager()
         doBeforeSetcontentView()
         setContentView(getLayoutId())
-        unbinder = ButterKnife.bind(this)
         mContext = this
         mPresenter = TUtil.getT<T>(this, 0)
         mModel = TUtil.getT(this, 1)
@@ -146,7 +142,6 @@ abstract class BaseActivity<T : BasePresenter<*, *>, E : BaseModel> : AppCompatA
             mPresenter?.onDestroy()
         }
         AppManager.instance.removeActivity(this)
-        unbinder?.unbind()
     }
 
 

@@ -1,0 +1,62 @@
+/**
+ *  全局统一配置文件
+ */
+ext {
+    // true 每个业务Module可以单独开发
+    // false 每个业务Module以lib的方式运行
+    // 修改之后需要执行 Sync 才可以生效
+
+    // 版本号
+    versions = [
+            applicationId           :"com.zhang.common",
+            versionCode             :1,
+            versionName             :"1.0.0",
+
+            compileSdkVersion       :27,
+            buildToolsVersion       :"27.0.3",
+            minSdkVersion           :17,
+            targetSdkVersion        :23,
+
+            androidSupportSdkVersion:"27.1.1",
+            runnerVersion           :"1.0.2",
+            espressoVerSion         :"3.0.2",
+            junitVersion            :"4.12",
+
+            multidexVersion         :"1.0.3",
+            butterknifeVersion      :"8.8.1",
+            retrofitVersion         :"2.3.0",
+            converterGsonVersion    :"2.3.0",
+            adapterRxjava2Version   :"2.3.0",
+
+            rxjavaVersion           :"2.0.2",
+            rxandroidVersion        :"2.0.2",
+            rxrelayVersion          :"2.0.0",
+            loggingInterceptorVersion:"3.8.1",
+            aviLoadingVersion       :"2.1.3",
+            loggerVersion           :"2.2.0"
+    ]
+
+    dependencies = [
+            "appcompat_v7"          :"com.android.support:appcompat-v7:${versions["androidSupportSdkVersion"]}",
+            "design"                :"com.android.support:design:${versions["androidSupportSdkVersion"]}",
+            "runner"                :"com.android.support.test:runner:${versions["runnerVersion"]}",
+            "espresso-core"         :"com.android.support.test.espresso:espresso-core:${versions["espressoVerSion"]}",
+            "junit"                 :"junit:junit:${versions["junitVersion"]}",
+            // 分包
+            "multidex"              :"com.android.support:multidex:${versions["multidexVersion"]}",
+            // 黄油刀
+            "butterknife"           :"com.jakewharton:butterknife:${versions["butterknifeVersion"]}",
+            "butterknife-compiler"  :"com.jakewharton:butterknife-compiler:${versions["butterknifeVersion"]}",
+            // 网络
+            "retrofit"              :"com.squareup.retrofit2:retrofit:${versions["retrofitVersion"]}",
+            "converter-gson"        :"com.squareup.retrofit2:converter-gson:${versions["converterGsonVersion"]}",
+            "adapter-rxjava2"       :"com.squareup.retrofit2:adapter-rxjava2:${versions["adapterRxjava2Version"]}",
+            "rxjava"                :"io.reactivex.rxjava2:rxjava:${versions["rxjavaVersion"]}",
+            "rxandroid"             :"io.reactivex.rxjava2:rxandroid:${versions["rxandroidVersion"]}",
+            "rxrelay"               :"com.jakewharton.rxrelay2:rxrelay:${versions["rxrelayVersion"]}",
+            "logging-interceptor"   :"com.squareup.okhttp3:logging-interceptor:${versions["loggingInterceptorVersion"]}",
+            "avi"                   :"com.wang.avi:library:${versions["aviLoadingVersion"]}",
+            "logger"                :"com.orhanobut:logger:${versions["loggerVersion"]}"
+    ]
+
+}
