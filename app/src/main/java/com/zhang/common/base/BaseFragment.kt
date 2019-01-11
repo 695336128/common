@@ -26,9 +26,6 @@ abstract class BaseFragment<T: BasePresenter<*,*>,E: BaseModel> : Fragment() {
         }
         mPresenter = TUtil.getT(this,0)
         mModel = TUtil.getT(this,1)
-        if (mPresenter != null){
-            mPresenter!!.mContext = this.activity
-        }
         initPresenter()
         initView()
         return rootView
@@ -84,7 +81,7 @@ abstract class BaseFragment<T: BasePresenter<*,*>,E: BaseModel> : Fragment() {
      * 开启浮动加载进度条
      */
     fun startProgressDialog() {
-        LoadingUtil.showLoading(mPresenter?.mContext!!)
+        LoadingUtil.showLoading(activity)
     }
 
     /**
@@ -98,7 +95,7 @@ abstract class BaseFragment<T: BasePresenter<*,*>,E: BaseModel> : Fragment() {
      * 显示Toast提示(来自String)
      */
     fun showToast(text: String) {
-        ToastUtil.showToast(mPresenter?.mContext!!,text)
+        ToastUtil.showToast(activity,text)
     }
 
     override fun onDestroyView() {

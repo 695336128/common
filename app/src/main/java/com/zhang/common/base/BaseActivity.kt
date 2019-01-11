@@ -32,7 +32,6 @@ abstract class BaseActivity<T : BasePresenter<*, *>, E : BaseModel> : AppCompatA
         mContext = this
         mPresenter = TUtil.getT<T>(this, 0)
         mModel = TUtil.getT(this, 1)
-        mPresenter?.mContext = this
         this.initPresenter()
         this.initView()
     }

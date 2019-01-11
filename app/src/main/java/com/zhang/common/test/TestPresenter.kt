@@ -12,13 +12,14 @@ import io.reactivex.functions.Consumer
 class TestPresenter : TestContract.Presenter() {
 
     override fun onStart(){
-        mRxManage.onEvent(TestBean::class.java, Consumer { })
+        mRxManage.onEvent(TestBean::class.java, Consumer { println("收到了RxBus") })
     }
 
     override fun loadDataRequest() {
         // 处理在Model中的请求返回值
-        mModel?.loadData()?.subscribe(object : RxObserver<TestBean>(mContext!!){
+        mModel?.loadData()?.subscribe(object : RxObserver<TestBean>(){
             override fun doOnSubscribe(d: Disposable) {
+                mView?.showLoading()
                 mRxManage.add(d)
             }
 
@@ -28,6 +29,7 @@ class TestPresenter : TestContract.Presenter() {
             }
 
             override fun doOnError(message: String) {
+                mView?.stopLoading()
                 mView?.showErrorTip(message)
             }
         })

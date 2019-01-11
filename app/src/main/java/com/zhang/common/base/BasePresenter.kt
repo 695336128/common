@@ -1,6 +1,5 @@
 package com.zhang.common.base
 
-import android.content.Context
 import com.zhang.common.baserx.RxManager
 
 /**
@@ -10,7 +9,6 @@ import com.zhang.common.baserx.RxManager
  */
 abstract class BasePresenter<T, E> {
 
-    var mContext: Context? = null
     var mModel: E? = null
     var mView: T? = null
     var mRxManage = RxManager()

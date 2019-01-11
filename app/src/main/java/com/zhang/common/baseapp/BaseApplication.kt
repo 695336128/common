@@ -1,9 +1,7 @@
 package com.zhang.common.baseapp
 
-import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
-import android.content.res.Resources
 import android.support.multidex.MultiDex
 
 /**
@@ -15,18 +13,8 @@ open class BaseApplication : Application(){
 
     val TAG = "FATE"
 
-    companion object {
-        @SuppressLint("StaticFieldLeak")
-        var context: Context? = null
-
-        fun getAppResources():Resources{
-            return context?.resources!!
-        }
-    }
-
     override fun onCreate() {
         super.onCreate()
-        context = this
     }
 
     /**
